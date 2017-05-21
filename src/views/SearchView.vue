@@ -7,7 +7,7 @@
           name="query"
           v-model.trim.lazy="queryStr"
           placeholder="搜索 书 / 影 / 音 / 标签">
-        <a href="javascript:void(0);" :click="query()">搜索</a>
+        <a href="javascript:void(0);">搜索</a>
       </form>
     </div>
     <div v-if="queryStr" class="search-res">
@@ -26,12 +26,12 @@
 
 <script>
 import { mapState } from 'vuex'
-
-import Group from '../components/Group'
+import group from '../components/group'
 
 export default {
-  name: 'search-view',
-  components: { Group },
+  components: {
+    group
+  },
   data () {
     return {
       queryStr: ''
@@ -40,32 +40,18 @@ export default {
   computed: {
     ...mapState({
       queryRes_movie: state => state.search.queryRes_movie
-      // API rate limit exceeded
-      // queryRes_book: state => state.search.queryRes_book,
-      // queryRes_music: state => state.search.queryRes_music
     })
   },
-  methods: {
-    query: function () {
-      if (this.queryStr) {
-        this.$store.dispatch({
-          type: 'query',
-          queryStr: this.queryStr
-        })
-      }
-    }
-  },
-  created: function () {
+  created() {
     const q = this.$route.params.q
     if (q) {
-      console.log(q)
       this.queryStr = q
     }
   }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" scss>
 .search-view {
   .search {
     padding: 0.7rem 2rem;

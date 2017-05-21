@@ -1,20 +1,19 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import PagesView from '../views/PagesView'
+import pageView from '../views/PageView'
 import HomeView from '../views/HomeView'
 import MovieView from '../views/MovieView'
 import BookView from '../views/BookView'
-import StatusView from '../views/StatusView'
 import GroupView from '../views/GroupView'
-import SubjectView from '../views/SubjectView'
+import StatusView from '../views/StatusView'
 import DetailView from '../views/DetailView'
-import SearchView from '../views/SearchView'
 import LoginView from '../views/LoginView'
 import RegisterView from '../views/RegisterView'
+import SearchView from '../views/SearchView'
+import SubjectView from '../views/SubjectView'
 
 Vue.use(Router)
-
 export default new Router({
   routes: [
     {
@@ -23,7 +22,7 @@ export default new Router({
     },
     {
       path: '/pages',
-      component: PagesView,
+      component: pageView,
       children: [
         {
           path: '',
@@ -31,28 +30,23 @@ export default new Router({
         },
         {
           path: 'home',
-          name: 'HomeView',
           component: HomeView
         },
         {
           path: 'movie',
-          name: 'MovieView',
           component: MovieView
         },
         {
           path: 'book',
-          name: 'BookView',
           component: BookView
         },
         {
-          path: 'status',
-          name: 'StatusView',
-          component: StatusView
+          path: 'group',
+          component: GroupView
         },
         {
-          path: 'group',
-          name: 'GroupView',
-          component: GroupView
+          path: 'status',
+          component: StatusView
         },
         {
           path: 'detail/:id',
@@ -62,34 +56,30 @@ export default new Router({
       ]
     },
     {
-      path: '/pages/:classify/subject/:id',
-      name: 'SubjectView',
-      components: {
-        default: PagesView,
-        subject: SubjectView
-      }
+      path: '/login',
+      name: 'LoginView',
+      component: LoginView
     },
     {
       path: '/search',
       name: 'SearchView',
       components: {
-        default: PagesView,
+        default: pageView,
         search: SearchView
       }
     },
     {
-      path: '/login',
-      name: 'LoginView',
-      component: LoginView
+      path: '/pages/:classify/subject/:id',
+      name: 'SubjectView',
+      components: {
+        default: pageView,
+        subject: SubjectView
+      }
     },
     {
       path: '/register',
       name: 'RegisterView',
       component: RegisterView
     },
-    {
-      path: '*',
-      redirect: '/pages/'
-    }
   ]
 })

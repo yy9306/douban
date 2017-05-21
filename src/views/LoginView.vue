@@ -34,10 +34,6 @@
           <span class="showpwd" :class="{show: isShow}" @click="showpwd()"></span>
         </label>
       </div>
-      <!-- <div class="form-element hide">
-        <input id="remember" type="checkbox" name="remember" checked="">
-        <label for="remember">下次自动登录</label>
-      </div> -->
       <div class="">
         <input class="submit" type="submit" value="登录">
       </div>
@@ -64,7 +60,7 @@ export default {
     }
   },
   methods: {
-    showpwd: function () {
+    showpwd() {
       this.isShow = this.isShow ? 0 : 1
       this.isShow ? this.passType = 'text' : this.passType = 'password'
     }

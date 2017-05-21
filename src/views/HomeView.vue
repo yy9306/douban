@@ -1,7 +1,7 @@
 <template>
   <div class="home-view has-header">
-    <sub-nav mold="quickNav"></sub-nav>
-    <list mold="thumbnail" :items="events"></list>
+    <sub-nav></sub-nav>
+    <list :items="events"></list>
     <infinite-loading :on-infinite="onInfinite" ref="infiniteLoading"></infinite-loading>
   </div>
 </template>
@@ -14,7 +14,6 @@ import SubNav from '../components/SubNav'
 import List from '../components/List'
 
 export default {
-  name: 'home-view',
   components: { SubNav, List, InfiniteLoading },
   data () {
     return {}
@@ -34,7 +33,7 @@ export default {
     ...mapActions([
       'loadMore',
       'getEvent'
-    ])
+    ]),
   }
 }
 </script>

@@ -18,7 +18,6 @@
 
 <script>
 export default {
-  name: 'banner',
   props: {
     title: {
       type: String,
@@ -34,9 +33,8 @@ export default {
       default: ''
     }
   },
-  data () {
-    return {
-    }
+  data() {
+    return {}
   }
 }
 </script>

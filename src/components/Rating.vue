@@ -1,4 +1,4 @@
-<template>
+<template lang="html">
   <div class="rating" v-if="rating">
     <template v-for="n in full">
       <span class="star-full"></span>
@@ -16,19 +16,22 @@
 
 <script>
 export default {
-  name: 'rating',
-  props: ['rating'],
-  data () {
+  props:{
+    rating : {
+      type: Object
+    }
+  },
+  data() {
     return {
       full: 5,
       half: 0,
       gray: 0
     }
   },
-  created () {
+  created() {
     let average = this.rating.average
-    this.full = parseInt(average / 2)
-    this.half = average % 2 === 0 ? 0 : 1
+    this.full = parseInt(average/2);
+    this.half = average%2 == 0? 0 : 1;
     this.gray = 5 - this.full - this.half
   }
 }

@@ -1,16 +1,13 @@
-<template>
+<template lang="html">
   <div class="group-view has-header">
-    <user-bar holder="登录参与讨论"></user-bar>
-    <group title="租房找室友" :items="group_a">
-      <a class="list-link" href="#" slot="more">更多相关小组</a>
-    </group>
-    <group title="来聊五块钱" :items="group_b">
-      <a class="list-link" href="#" slot="more">来聊五块钱</a>
-    </group>
-    <group title="买买买" :items="group_c">
-      <a class="list-link" href="#" slot="more">更多相关小组</a>
-    </group>
-    <download-app></download-app>
+     <user-bar holder="登录参与讨论"></user-bar>
+     <group title="租房找室友" :items="group_a">
+       <a class="list-link" href="#" slot="more">更多相关小组</a>
+     </group>
+     <group title="聊聊人生" :items="group_b">
+       <a class="list-link" href="#" slot="more">更多相关小组</a>
+     </group>
+     <download-app></download-app>
   </div>
 </template>
 
@@ -18,14 +15,13 @@
 import { mapState } from 'vuex'
 
 import UserBar from '../components/UserBar'
-import Group from '../components/Group'
+import group from '../components/group'
 import DownloadApp from '../components/DownloadApp'
-
 export default {
-  name: 'group-view',
-  components: { UserBar, Group, DownloadApp },
-  data () {
-    return {}
+  components: {
+    UserBar,
+    group,
+    DownloadApp
   },
   computed: {
     ...mapState({

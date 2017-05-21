@@ -1,4 +1,4 @@
-<template>
+<template lang="html">
   <div class="download-app">
     <div class="info">
       <img src="../assets/douban-app-logo.png" alt="下载豆瓣">
@@ -12,17 +12,17 @@
 </template>
 
 <script>
-  export default {
-    name: 'download-app',
-    data () {
-      return {
+export default {
+  name: 'download-app',
+  data () {
+    return {
 
-      }
     }
   }
+}
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .download-app {
   padding: 0 0 2rem 0;
   margin-top: 5rem;

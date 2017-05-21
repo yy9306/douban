@@ -7,7 +7,7 @@
           type="search"
           name="query"
           v-model.trim.lazy="queryStr"
-          @keyup.enter="goSearch()">
+          @keyup.enter="goSearch">
       </form>
     </div>
     <ul class="has-header">
@@ -77,31 +77,30 @@
 </template>
 
 <script>
-import SubNav from '../components/SubNav'
+  import SubNav from '../components/SubNav'
 
-export default {
-  name: 'talion-view',
-  components: { SubNav },
-  data () {
-    return {
-      queryStr: ''
-    }
-  },
-  methods: {
-    closeTalion: function () {
-      this.$emit('closeTalion')
+  export default {
+    components: { SubNav },
+    data () {
+      return {
+        queryStr: ''
+      }
     },
-    goSearch: function () {
-      this.$emit('closeTalion')
-      this.$router.push({
-        name: 'SearchView',
-        params: {
-          q: this.queryStr
-        }
-      })
+    methods: {
+      closeTalion: function () {
+        this.$emit('closeTalion')
+      },
+      goSearch() {
+        this.$emit('closeTalion')
+        this.$router.push({
+          name: 'SearchView',
+          params: {
+            q: this.queryStr
+          }
+        })
+      }
     }
   }
-}
 </script>
 
 <style lang="scss" scoped>
@@ -180,5 +179,4 @@ ul {
     letter-spacing: 0.1rem;
   }
 }
-
 </style>

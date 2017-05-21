@@ -51,32 +51,30 @@
 </template>
 
 <script>
+
 import { mapState } from 'vuex'
-import Banner from '../components/Banner'
+import Banner from '../components/banner'
 import Tags from '../components/Tags'
 import DownloadApp from '../components/DownloadApp'
-
 export default {
-  name: 'detail-view',
-  components: { Banner, Tags, DownloadApp },
-  data () {
-    return {}
-  },
-  filters: {
-    toArray (value) {
-      return value.split(',')
-    }
+  components: {
+    Banner,
+    Tags,
+    DownloadApp
   },
   computed: {
     content: function () {
-      // Careful XSS
-      // Remove copyright imgs
       return this.eventItem.content.replace(/<img.+?>/ig, '')
     },
     ...mapState({
       bannerTitle: state => state.activities.bannerTitle,
       eventItem: state => state.activities.eventItem
     })
+  },
+  filters: {
+    toArray (value) {
+      return value.split(',')
+    }
   },
   beforeMount () {
     const id = this.$route.params.id
@@ -152,5 +150,4 @@ export default {
     font-size: 1.4rem;
   }
 }
-
 </style>

@@ -6,7 +6,7 @@
       <div class="subject-info">
         <div class="right">
           <a href="#">
-            <img v-if="subject.images" :src="subject.images.large" alt="cover">
+            <img v-if="subject.images" :src="subject.images.large" alt="cover" class="Img">
           </a>
         </div>
         <div class="left" v-if="subject.rating">
@@ -73,7 +73,7 @@
     <div class="subject-comments">
       <h2>{{subject.title}}的短评</h2>
       <div class="content-list">
-        <card mold="comment" v-for="item in items" :key="item"></card>
+        <cart mold="comment" v-for="item in items" :key="item"></cart>
         <a class="list-link" href="javascript:;">显示更多评论</a>
       </div>
     </div>
@@ -82,8 +82,8 @@
     </div>
     <div class="subject-question">
       <h2>关于{{subject.title}}的问答</h2>
-      <list :items="questions"></list>
-      <a class="list-link" href="javascript:;">显示更多问答</a>
+      <!-- <list :items="questions"></list> -->
+      <!-- <a class="list-link" href="javascript:;">显示更多问答</a> -->
     </div>
     <scroller title="推荐的豆列" type="onlyString" :items="movieTags"></scroller>
     <download-app></download-app>
@@ -92,23 +92,25 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex'
-
-import Banner from '../components/Banner'
-import Rating from '../components/Rating'
+import banner from '../components/banner'
+import  rating from '../components/rating'
 import subjectMark from '../components/SubjectMark'
-import Card from '../components/Card'
+import Cart from '../components/Cart'
 import List from '../components/List'
-import Scroller from '../components/Scroller'
 import Tags from '../components/Tags'
+import scroller from '../components/scroller'
 import DownloadApp from '../components/DownloadApp'
-
 export default {
-  name: 'subject-view',
-  components: { Banner, Rating, subjectMark, Card, List, Scroller, Tags, DownloadApp },
-  data () {
-    return {
+  components: {banner,rating,subjectMark,Cart,List,scroller,DownloadApp,Tags},
+  data() {
+    return{
       isExpand: true,
       items: new Array(5)
+    }
+  },
+  methods: {
+    expand: function (event) {
+      this.isExpand = false
     }
   },
   computed: {
@@ -125,12 +127,8 @@ export default {
       genres: 'genres'
     })
   },
-  methods: {
-    expand: function (event) {
-      this.isExpand = false
-    }
-  },
   created () {
+    console.log(this.$route.params.classify)
     const id = this.$route.params.id
     const classify = this.$route.params.classify
 
@@ -155,10 +153,8 @@ export default {
 .subject-info {
   overflow: hidden;
   margin-bottom: 3rem;
-
   .right {
     float: right;
-
     img {
       display: block;
       width: 100%;
@@ -168,7 +164,6 @@ export default {
 
   .left {
     margin-right: 10rem;
-
     .meta {
       margin-top: 1.5rem;
       padding-right: 2.4rem;

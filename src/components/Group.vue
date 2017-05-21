@@ -1,39 +1,33 @@
 <template>
-  <div class="group">
-    <div class="header">
-      <h2>{{title}}</h2>
-    </div>
-    <ul class="content">
-      <li v-for="item in items">
-        <router-link
-          :to="{name: 'SubjectView',
-          params: {classify: item.subtype ? item.subtype : 'book',
-          id: item.id}}">
-          <div class="group-meta">
-            <img v-if="item.images.small" :src="item.images.small" alt="cover">
-            <div class="group-info">
-              <span>{{item.title}}</span>
-              <rating v-if="item.rating" :rating="item.rating"></rating>
-            </div>
-            <span v-if="item.group_member" class="group-member">20005人</span>
-          </div>
-          <div v-if="item.group_topic" class="group-topic">
-            <span>{{item.group_topic.time}}</span>
-            <span>{{item.group_topic.title}}</span>
-          </div>
-        </router-link>
-      </li>
-    </ul>
-    <slot name="more"></slot>
-  </div>
+ <div class="group">
+   <div class="header">
+     <h2>{{title}}</h2>
+   </div>
+   <ul class="content">
+     <li v-for="item in items">
+       <a href="#">
+         <div class="group-meta">
+           <img v-if="item.images.small" :src="item.images.small" alt="cover">
+           <div class="group-info">
+             <span>{{item.title}}</span>
+             <rating v-if="item.rating" :rating="item.rating"></rating>
+           </div>
+           <span v-if="item.group_member" class="group-member">20005人</span>
+         </div>
+         <div v-if="item.group_topic" class="group-topic">
+           <span>{{item.group_topic.time}}</span>
+           <span>{{item.group_topic.title}}</span>
+         </div>
+        </a>
+     </li>
+   </ul>
+   <slot name="more"></slot>
+ </div>
 </template>
 
 <script>
-import Rating from '../components/Rating'
-
+import rating from '../components/rating'
 export default {
-  name: 'group',
-  components: { Rating },
   props: {
     title: {
       type: String,
@@ -44,8 +38,8 @@ export default {
       required: true
     }
   },
-  data () {
-    return {}
+  components: {
+    rating
   }
 }
 </script>

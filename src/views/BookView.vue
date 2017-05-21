@@ -1,34 +1,35 @@
-<template>
-  <div class="movie-view has-header">
-    <scroller title="最受关注图书｜虚构类" type="hasCover" :items="novel"></scroller>
-    <scroller title="最受关注图书｜非虚构类" type="hasCover" :items="reality"></scroller>
-    <scroller title="豆瓣纸书" type="hasCover" :items="travel">
-      <div class="promItem" slot="promItem">
-        <img class="corver" src="../assets/book_zw.jpg" alt="">
-        <div class="content">
-          <span class="price">¥ 68</span>
-          <p class="name">造物</p>
-          <p class="info">改变世界的万物图典，3000幅图里的发明与冒险</p>
-        </div>
-      </div>
-    </scroller>
-    <scroller title="发现好书" type="onlyString" :items="bookTags"></scroller>
-    <types></types>
-    <download-app></download-app>
-  </div>
+<template lang="html">
+   <div class="movie-view has-header">
+     <scroller title="最受关注图书｜虚构类" type="hasCover" :items="novel"></scroller>
+     <scroller title="最受关注图书｜非虚构类" type="hasCover" :items="reality"></scroller>
+     <scroller title="豆瓣纸书" type="hasCover" :items="travel">
+       <div class="promItem" slot="promItem">
+         <img class="corver" src="../assets/book_zw.jpg" alt="">
+         <div class="content">
+           <span class="price">¥ 68</span>
+           <p class="name">造物</p>
+           <p class="info">改变世界的万物图典，3000幅图里的发明与冒险</p>
+         </div>
+       </div>
+     </scroller>
+     <scroller title="发现好书" type="onlyString" :items="bookTags"></scroller>
+     <Types></Types>
+     <download-app></download-app>
+   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-
-import Scroller from '../components/Scroller'
+import scroller from '../components/scroller'
 import Types from '../components/Types'
 import DownloadApp from '../components/DownloadApp'
-
 export default {
-  name: 'book-view',
-  components: { Scroller, Types, DownloadApp },
-  data () {
+  components: {
+    scroller,
+    Types,
+    DownloadApp
+  },
+  data() {
     return {}
   },
   computed: {
@@ -39,18 +40,13 @@ export default {
       bookTags: state => state.book.bookTags
     })
   },
-  methods: {
-    getBook: function () {
-      this.$store.dispatch('getBook')
-    }
-  },
-  created: function created () {
-    this.getBook()
+  created() {
+    this.$store.dispatch('getBook')
   }
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .promItem {
   overflow: hidden;
   margin: 1.6rem 1.8rem 0.8rem 1.6rem;

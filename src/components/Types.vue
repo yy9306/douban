@@ -1,10 +1,10 @@
-<template>
+<template lang="html">
   <div class="types">
     <h2>分类浏览</h2>
     <div class="content">
       <ul class="type-list">
         <li v-for="item in items">
-          <a :href="baseUri + item.href">{{item.title}}<span></span></a>
+          <a>{{item.title}}<span></span></a>
         </li>
         <li></li>
       </ul>
@@ -14,8 +14,7 @@
 
 <script>
 export default {
-  name: 'types',
-  data () {
+  data() {
     return {
       baseUri: 'https://m.douban.com/',
       items: [
@@ -93,7 +92,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .types {
   margin-top: 1rem;
 
@@ -142,4 +141,5 @@ export default {
     margin-top: 1rem;
   }
 }
+
 </style>

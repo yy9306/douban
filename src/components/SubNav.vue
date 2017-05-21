@@ -1,52 +1,34 @@
-<template>
+<template id="">
   <div class="sub-nav">
-    <div class="navBottom" v-if="mold === 'navBottom'">
-      <div class="nav-item">
-        <router-link :to="{name: 'RegisterView'}">注册帐号</router-link><!-- replace blank
-        --><router-link :to="{name: 'LoginView'}">登录豆瓣</router-link>
-      </div>
-      <div class="nav-item">
-        <a href="https://movie.douban.com/">使用桌面版</a><!-- replace blank
-        --><a href="#">使用豆瓣App</a>
-      </div>
-    </div>
-
-    <div class="quickNav" v-if="mold === 'quickNav'">
+    <div class="quickNav" >
       <ul class="quick-nav">
         <li>
-          <router-link :to="{name: 'MovieView'}">影院热映</router-link>
+          <router-link to="/pages/movie">影院热映</router-link>
         </li>
         <li>
-          <router-link :to="{name: 'StatusView'}">欧美新碟榜</router-link>
+          <router-link to="/pages/status">欧美新碟榜</router-link>
         </li>
         <li>
-          <router-link :to="{name: 'RegisterView'}">注册帐号</router-link>
+          <router-link to="/register">注册帐号</router-link>
         </li>
         <li>
-          <router-link :to="{name: 'LoginView'}">登录豆瓣</router-link>
+          <router-link to="/login">登录豆瓣</router-link>
         </li>
       </ul>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'sub-nav',
-  props: {
-    mold: {
-      type: String,
-      default: 'quickNav'
-    }
-  },
-  data () {
-    return {
-    }
-  }
-}
+<script type="text/javascript">
+  export default{}
 </script>
 
-<style lang='scss' scoped>
+
+<style lang ="scss" scoped>
+.sub-nav{
+  margin: 0 1.8rem;
+  padding-top: 4.8rem;
+}
 .navBottom {
   width: 100%;
   border-bottom: 0.1rem solid #f3f3f3;

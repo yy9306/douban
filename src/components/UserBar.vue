@@ -1,24 +1,23 @@
 <template>
-  <router-link class="user-bar" :to="{ name: 'LoginView'}" tag="div">
+  <div class="user-bar" >
     <div class="avatar">
       <img src="../assets/user_normal.jpg" alt="未登陆">
     </div>
     <div class="holder">{{holder}}</div>
     <div class="icon icon-camera"></div>
     <div class="icon icon-pen"></div>
-  </router-link>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'user-bar',
   props: {
     holder: {
       type: String,
-      required: true
+      default: "neb"
     }
   },
-  data () {
+  data() {
     return {}
   }
 }

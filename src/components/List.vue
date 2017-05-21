@@ -1,9 +1,7 @@
-<template>
+<template id="">
   <div class="list">
-    <template v-if="mold === 'thumbnail'" v-for="item in items">
-      <router-link
-        class="thumbnail"
-        :to="{name: 'DetailView', params: { id: item.id }}">
+    <template v-for="item in items">
+      <router-link class="thumbnail" :to="{name: 'DetailView', params:{id: item.id}}">
         <div class="content">
           <img :src="item.image_hlarge" alt="cover">
           <h3>{{item.title}}</h3>
@@ -17,46 +15,30 @@
         </div>
       </router-link>
     </template>
-    <template v-if="mold === 'basic'">
-      <ul class="basic">
-        <li v-for="item in items">
-          <a href="#">
-            <h3>{{item.title}}</h3>
-            <div class="info">{{item.comments}}</div>
-          </a>
-        </li>
-      </ul>
-    </template>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'list',
-  props: {
-    mold: {
-      type: String,
-      default: 'basic'
-    },
-    items: {
-      type: Array,
-      required: true
-    }
-  },
-  data () {
-    return {
-    }
-  },
-  filters: {
-    subStr: function (value) {
-      value.replace(/<.+>|\s/, '')
-      return value.slice(0, 30)
-    }
-  }
-}
+<script type="text/javascript">
+   export default{
+     data() {
+        return {}
+     },
+     props: {
+       items: {
+         type: Array,
+         required: true
+       }
+     },
+     filters: {
+       subStr(value) {
+         value.replace(/<.+>|\s/, '')
+         return value.slice(0, 30)
+       }
+     }
+   }
 </script>
 
-<style lang='scss' scoped>
+<style lang = "scss" scoped>
 .list {
   .thumbnail {
     position: relative;
